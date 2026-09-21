@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.sanjudigitalstudio.com/</loc></url>
+  <url><loc>https://www.sanjudigitalstudio.com/about/</loc></url>
+  <url><loc>https://www.sanjudigitalstudio.com/services/</loc></url>
+  <url><loc>https://www.sanjudigitalstudio.com/gallery/</loc></url>
+  <url><loc>https://www.sanjudigitalstudio.com/contact/</loc></url>
+  <url><loc>https://www.sanjudigitalstudio.com/blog/</loc></url>
+  {% for page in pages %}<url><loc>https://www.sanjudigitalstudio.com{{ page.get_absolute_url }}</loc><lastmod>{{ page.updated_at|date:'c' }}</lastmod></url>{% endfor %}
+  {% for post in posts %}<url><loc>https://www.sanjudigitalstudio.com{{ post.get_absolute_url }}</loc><lastmod>{{ post.updated_at|date:'c' }}</lastmod></url>{% endfor %}
+</urlset>

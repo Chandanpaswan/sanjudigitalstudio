@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Gallery | Sanju Digital Studio{% endblock %}
+{% block content %}
+<section class="page-hero" style="background:linear-gradient(to bottom,rgba(8,8,8,.48),rgba(8,8,8,.9)),url('{% static 'img/gallery-hero.jpg' %}') center/cover"><div class="page-hero-content"><h1>Selected work</h1><p>Weddings, portraits and little details</p></div></section>
+<section class="section"><div class="container"><div class="filter-bar"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="wedding">Weddings</button><button class="filter-btn" data-filter="prewedding">Pre-wedding</button><button class="filter-btn" data-filter="portrait">Portraits</button><button class="filter-btn" data-filter="baby">Baby</button><button class="filter-btn" data-filter="product">Product</button></div><div class="masonry">
+{% for image, title, category in gallery_items %}<figure class="gal-item" data-category="{{ category }}" data-title="{{ title }}" data-sub="Sanju Digital Studio"><img src="{% static image %}" alt="{{ title }}"><figcaption class="gal-label">{{ title }}</figcaption></figure>{% endfor %}
+</div></div></section>
+<div class="lightbox" id="lightbox"><button id="lbClose" aria-label="Close"><i class="fas fa-times"></i></button><button id="lbPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button><img id="lbImg" alt=""><button id="lbNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button><p id="lbCaption"></p></div>
+{% endblock %}

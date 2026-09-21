@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Journal | Sanju Digital Studio{% endblock %}
+{% block meta_description %}Photography tips, planning guides, and real stories from Sanju Digital Studio in Faridabad.{% endblock %}
+{% block content %}
+<section class="page-hero" style="background:linear-gradient(to bottom,rgba(8,8,8,.48),rgba(8,8,8,.9)),url('{% static 'img/portrait-editorial.jpg' %}') center/cover"><div class="page-hero-content"><h1>The studio journal</h1><p>Ideas for photographs that feel like you</p></div></section>
+<section class="section"><div class="container"><div class="section-header"><p class="section-subtitle">From behind the lens</p><h2 class="section-title gold-underline">Notes, guides and stories</h2></div><div class="blog-grid">{% for post in posts %}<article class="blog-card"><a href="{{ post.get_absolute_url }}">{% if post.featured_image %}<img src="{{ post.featured_image.url }}" alt="{{ post.image_alt|default:post.title }}" loading="lazy">{% else %}<img src="{% static 'img/portrait-editorial.jpg' %}" alt="{{ post.title }}" loading="lazy">{% endif %}</a><div class="blog-card-body"><p class="blog-date">{{ post.published_at|date:"d M Y" }}</p><h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3><p>{{ post.excerpt }}</p><a class="text-link" href="{{ post.get_absolute_url }}">Read story <i class="fas fa-arrow-right"></i></a></div></article>{empty}<p class="empty-state">Our first journal stories are coming soon. For a personal recommendation, message us on WhatsApp.</p>{% endfor %}</div></div></section>
+{% endblock %}

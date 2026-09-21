@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ page.seo_title|default:page.title }} | Sanju Digital Studio{% endblock %}
+{% block meta_description %}{{ page.meta_description|default:page.excerpt }}{% endblock %}
+{% block og_title %}{{ page.og_title|default:page.title }}{% endblock %}
+{% block og_description %}{{ page.og_description|default:page.excerpt }}{% endblock %}
+{% block og_image %}{% if page.og_image %}{{ page.og_image.url }}{% elif page.hero_image %}{{ page.hero_image.url }}{% else %}{% static 'img/hero-bg.jpg' %}{% endif %}{% endblock %}
+{% block canonical_url %}{{ page.canonical_url|default:request.build_absolute_uri }}{% endblock %}
+{% block content %}<section class="page-hero"{% if page.hero_image %} style="background:linear-gradient(to bottom,rgba(8,8,8,.48),rgba(8,8,8,.9)),url('{{ page.hero_image.url }}') center/cover"{% endif %}><div class="page-hero-content"><h1>{{ page.title }}</h1>{% if page.excerpt %}<p>{{ page.excerpt }}</p>{% endif %}</div></section><article class="section"><div class="container narrow rich-content">{{ page.content|linebreaks }}</div></article>{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About | Sanju Digital Studio{% endblock %}
+{% block content %}
+<section class="page-hero" style="background:linear-gradient(to bottom,rgba(8,8,8,.48),rgba(8,8,8,.9)),url('{% static 'img/photographer-work.jpg' %}') center/cover"><div class="page-hero-content"><h1>About the studio</h1><p>People, light and honest stories</p></div></section>
+<section class="section"><div class="container story-layout"><div class="story-img"><img src="{% static 'img/team-sanjay.jpg' %}" alt="Sanjay Kumar photographing a wedding"><div class="story-img-badge">Since 2014<small>Faridabad</small></div></div><div class="story-text"><p class="section-subtitle">A small studio with a big heart</p><h2 class="section-title gold-underline">We photograph how it felt.</h2><p>Sanju Digital Studio is a close-knit team creating warm, cinematic photographs for families, couples and growing brands across Faridabad and Delhi NCR.</p><p>From a quiet portrait to a full wedding day, we bring calm direction, thoughtful composition and an eye for the moments that happen between the planned ones.</p><a class="btn btn-gold" href="{% url 'studio:contact' %}">Work with us</a></div></div></section>
+{% endblock %}

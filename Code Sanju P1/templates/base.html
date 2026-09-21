@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% block meta_description %}Sanju Digital Studio creates wedding, portrait, baby and product photography in Faridabad and Delhi NCR.{% endblock %}">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sanju Digital Studio">
+  <meta property="og:title" content="{% block og_title %}Sanju Digital Studio | Faridabad Photography{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Professional photography in Faridabad and Delhi NCR.{% endblock %}">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta property="og:image" content="{% block og_image %}{% static 'img/hero-bg.jpg' %}{% endblock %}">
+  <link rel="canonical" href="{% block canonical_url %}{{ request.build_absolute_uri }}{% endblock %}">
+  <title>{% block title %}Sanju Digital Studio | Faridabad Photography{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="{% url 'studio:home' %}" aria-label="Sanju Digital Studio home">
+        <span class="logo-icon"><i class="fas fa-camera-retro"></i></span>
+        <span class="logo-text"><span class="studio-name">Sanju Digital Studio</span><span class="studio-sub">Faridabad · Delhi NCR</span></span>
+      </a>
+      <button id="navToggle" class="nav-toggle" type="button" aria-label="Open navigation"><i class="fas fa-bars"></i></button>
+      <ul id="navLinks" class="nav-links">
+        <li><a class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'studio:home' %}">Home</a></li>
+        <li><a class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="{% url 'studio:services' %}">Services</a></li>
+        <li><a class="{% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" href="{% url 'studio:gallery' %}">Gallery</a></li>
+        <li><a class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'studio:about' %}">About</a></li>
+        <li><a class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'studio:contact' %}">Contact</a></li>
+        <li><a class="{% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}" href="{% url 'studio:blog_list' %}">Journal</a></li>
+      </ul>
+      <a class="nav-phone" href="tel:9911256384"><i class="fas fa-phone-alt"></i> 9911 256 384</a>
+    </div>
+  </nav>
+
+  {% if messages %}
+    <div class="container" style="padding-top: 90px">
+      {% for message in messages %}<div class="form-success" style="display:block">{{ message }}</div>{% endfor %}
+    </div>
+  {% endif %}
+  {% block content %}{% endblock %}
+
+  <a class="wa-float" href="https://wa.me/{{ whatsapp_number }}?text=Hello%20Sanju%20Digital%20Studio%2C%20I%27d%20like%20to%20discuss%20a%20photography%20session." target="_blank" rel="noopener" aria-label="Chat with Sanju Digital Studio on WhatsApp" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+  <footer class="footer">
+    <div class="container"><p>© {% now "Y" %} Sanju Digital Studio · Sector 15, Faridabad</p></div>
+  </footer>
+  <script src="{% static 'main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ post.seo_title|default:post.title }} | Sanju Digital Studio{% endblock %}
+{% block meta_description %}{{ post.meta_description|default:post.excerpt }}{% endblock %}
+{% block og_title %}{{ post.og_title|default:post.title }}{% endblock %}
+{% block og_description %}{{ post.og_description|default:post.excerpt }}{% endblock %}
+{% block og_image %}{% if post.og_image %}{{ post.og_image.url }}{% elif post.featured_image %}{{ post.featured_image.url }}{% else %}{% static 'img/portrait-editorial.jpg' %}{% endif %}{% endblock %}
+{% block canonical_url %}{{ request.build_absolute_uri }}{% endblock %}
+{% block extra_head %}<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"{{ post.title|escapejs }}","description":"{{ post.excerpt|escapejs }}","datePublished":"{{ post.published_at|date:'c' }}","dateModified":"{{ post.updated_at|date:'c' }}","author":{"@type":"Person","name":"{{ post.author.get_full_name|default:post.author.username|escapejs }}"}}</script>{% endblock %}
+{% block content %}<article class="section blog-detail"><div class="container narrow"><p class="section-subtitle">{{ post.published_at|date:"d F Y" }} · {{ post.author.get_full_name|default:post.author.username }}</p><h1>{{ post.title }}</h1>{% if post.featured_image %}<img class="blog-detail-image" src="{{ post.featured_image.url }}" alt="{{ post.image_alt|default:post.title }}">{% endif %}<p class="blog-lead">{{ post.excerpt }}</p><div class="blog-content">{{ post.content|linebreaks }}</div><a class="btn btn-gold" href="https://wa.me/{{ whatsapp_number }}?text=Hello%20Sanju%20Digital%20Studio%2C%20I%20read%20your%20journal%20and%20would%20like%20to%20discuss%20a%20shoot." target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Discuss your shoot</a>{% if post.related_posts.exists %}<section class="related-posts"><h2>You may also like</h2><div class="related-links">{% for related in post.related_posts.all %}<a href="{{ related.get_absolute_url }}">{{ related.title }}</a>{% endfor %}</div></section>{% endif %}</div></article>{% endblock %}

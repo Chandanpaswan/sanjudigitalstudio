@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Sanju Digital Studio | Photography in Faridabad{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-bg" id="heroBg" style="background-image:linear-gradient(to bottom,rgba(8,8,8,.4),rgba(8,8,8,.92)),url('{% static 'img/hero-bg.jpg' %}')"></div>
+  <canvas id="starsCanvas"></canvas>
+  <div class="hero-content"><div class="aperture-svg"><i class="fas fa-camera" style="font-size:6rem;color:var(--gold)"></i></div>
+    <h1 class="hero-title">Stories worth <span>remembering.</span></h1>
+    <p class="hero-tagline">Photography with feeling · Faridabad and Delhi NCR</p>
+    <div class="hero-cta"><a class="btn btn-gold" href="{% url 'studio:contact' %}"><i class="fas fa-calendar-check"></i> Book a session</a><a class="btn btn-outline" href="{% url 'studio:gallery' %}"><i class="fas fa-images"></i> Explore portfolio</a></div>
+  </div>
+</section>
+<section class="section"><div class="container"><div class="section-header"><p class="section-subtitle">Made for your milestones</p><h2 class="section-title gold-underline">Every frame has a feeling</h2></div><div class="gallery-preview-grid">
+{% for image, title, category in featured_images %}<a class="gp-item" href="{% url 'studio:gallery' %}"><img src="{% static image %}" alt="{{ title }} photography"><span>{{ title }}</span></a>{% endfor %}
+</div></div></section>
+<section class="section cta-section"><div class="container section-header"><p class="section-subtitle">Your story starts here</p><h2 class="section-title">Let's make it unforgettable.</h2><p>Tell us what you are planning and we will shape the right shoot around it.</p><a class="btn btn-gold" href="{% url 'studio:contact' %}">Start a conversation</a></div></section>
+{% endblock %}

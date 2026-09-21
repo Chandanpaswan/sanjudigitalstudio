@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Services | Sanju Digital Studio{% endblock %}
+{% block content %}
+<section class="page-hero" style="background:linear-gradient(to bottom,rgba(8,8,8,.48),rgba(8,8,8,.9)),url('{% static 'img/camera-man.jpg' %}') center/cover"><div class="page-hero-content"><h1>Photography services</h1><p>Thoughtful work, beautifully delivered</p></div></section>
+<section class="section"><div class="container"><div class="section-header"><p class="section-subtitle">Choose your story</p><h2 class="section-title gold-underline">What we create</h2></div><div class="svc-grid">
+{% for name, image, text in services %}<article class="svc-card"><div class="svc-card-img"><img src="{% static image %}" alt="{{ name }}"><div class="svc-icon-badge"><i class="fas fa-camera"></i></div></div><div class="svc-card-body"><h3>{{ name }}</h3><p>{{ text }}</p><a class="btn btn-outline" href="{% url 'studio:contact' %}">Enquire <i class="fas fa-arrow-right"></i></a></div></article>{% endfor %}
+</div></div></section>
+{% endblock %}
