@@ -4,17 +4,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{% block meta_description %}Sanju Digital Studio creates wedding, portrait, baby and product photography in Faridabad and Delhi NCR.{% endblock %}">
+  <meta name="description" content="{% block meta_description %}Sanju Digital Studio creates warm, cinematic wedding, portrait, baby and product photography in Faridabad and Delhi NCR.{% endblock %}">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Sanju Digital Studio">
-  <meta property="og:title" content="{% block og_title %}Sanju Digital Studio | Faridabad Photography{% endblock %}">
-  <meta property="og:description" content="{% block og_description %}Professional photography in Faridabad and Delhi NCR.{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}Sanju Digital Studio | Photography in Faridabad{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Warm, cinematic photography for people, families and brands across Faridabad and Delhi NCR.{% endblock %}">
   <meta property="og:url" content="{{ request.build_absolute_uri }}">
   <meta property="og:image" content="{% block og_image %}{% static 'img/hero-bg.jpg' %}{% endblock %}">
   <link rel="canonical" href="{% block canonical_url %}{{ request.build_absolute_uri }}{% endblock %}">
   <title>{% block title %}Sanju Digital Studio | Faridabad Photography{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="{% static 'redesign.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   {% block extra_head %}{% endblock %}
 </head>
@@ -25,7 +26,7 @@
         <span class="logo-icon"><i class="fas fa-camera-retro"></i></span>
         <span class="logo-text"><span class="studio-name">Sanju Digital Studio</span><span class="studio-sub">Faridabad · Delhi NCR</span></span>
       </a>
-      <button id="navToggle" class="nav-toggle" type="button" aria-label="Open navigation"><i class="fas fa-bars"></i></button>
+      <button id="navToggle" class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><i class="fas fa-bars"></i></button>
       <ul id="navLinks" class="nav-links">
         <li><a class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'studio:home' %}">Home</a></li>
         <li><a class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="{% url 'studio:services' %}">Services</a></li>
@@ -34,7 +35,7 @@
         <li><a class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'studio:contact' %}">Contact</a></li>
         <li><a class="{% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}" href="{% url 'studio:blog_list' %}">Journal</a></li>
       </ul>
-      <a class="nav-phone" href="tel:9911256384"><i class="fas fa-phone-alt"></i> 9911 256 384</a>
+      <a class="nav-cta" href="{% url 'studio:contact' %}"><span>Get a quote</span><i class="fas fa-arrow-up-right-from-square"></i></a>
     </div>
   </nav>
 
@@ -45,10 +46,15 @@
   {% endif %}
   {% block content %}{% endblock %}
 
-  <a class="wa-float" href="https://wa.me/{{ whatsapp_number }}?text=Hello%20Sanju%20Digital%20Studio%2C%20I%27d%20like%20to%20discuss%20a%20photography%20session." target="_blank" rel="noopener" aria-label="Chat with Sanju Digital Studio on WhatsApp" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a class="wa-float" href="https://wa.me/{{ whatsapp_number }}?text=Hello%20Sanju%20Digital%20Studio%2C%20I%20would%20like%20to%20know%20more%20about%20your%20photography%20services." target="_blank" rel="noopener" aria-label="Chat with Sanju Digital Studio on WhatsApp" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
   <footer class="footer">
-    <div class="container"><p>© {% now "Y" %} Sanju Digital Studio · Sector 15, Faridabad</p></div>
+    <div class="container footer-grid">
+      <div class="footer-brand"><a class="nav-logo" href="{% url 'studio:home' %}"><span class="logo-icon"><i class="fas fa-camera-retro"></i></span><span class="logo-text"><span class="studio-name">Sanju Digital Studio</span><span class="studio-sub">Faridabad · Delhi NCR</span></span></a><p>Warm, cinematic photography for weddings, families, portraits and brands.</p><div class="footer-social"><a href="https://wa.me/{{ whatsapp_number }}" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a><a href="tel:9911256384" aria-label="Call Sanju Digital Studio"><i class="fas fa-phone"></i></a></div></div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="{% url 'studio:about' %}">About the studio</a></li><li><a href="{% url 'studio:services' %}">Photography services</a></li><li><a href="{% url 'studio:gallery' %}">Selected work</a></li><li><a href="{% url 'studio:blog_list' %}">Studio journal</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:9911256384">9911 256 384</a></li><li><span>Sector 15, Faridabad</span></li><li><span>Open daily · 9 AM–8 PM</span></li></ul></div>
+    </div>
+    <div class="footer-bottom">© {% now "Y" %} Sanju Digital Studio · Crafted for real stories in Faridabad and Delhi NCR</div>
   </footer>
   <script src="{% static 'main.js' %}"></script>
 </body>

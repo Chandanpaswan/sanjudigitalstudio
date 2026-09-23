@@ -21,6 +21,9 @@
     navToggle.addEventListener('click', () => {
       navToggle.classList.toggle('open');
       navLinks.classList.toggle('mobile-open');
+      const isOpen = navLinks.classList.contains('mobile-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
       document.body.style.overflow = navLinks.classList.contains('mobile-open') ? 'hidden' : '';
     });
     // Close on link click
@@ -28,6 +31,8 @@
       a.addEventListener('click', () => {
         navToggle.classList.remove('open');
         navLinks.classList.remove('mobile-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Open navigation');
         document.body.style.overflow = '';
       });
     });
