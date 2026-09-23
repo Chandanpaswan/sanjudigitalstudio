@@ -79,7 +79,7 @@ def page_detail(request, slug):
 
 @require_GET
 def robots_txt(request):
-    content = "User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: https://www.sanjudigitalstudio.com/sitemap.xml\n"
+    content = "User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: https://sanjudigitalstudio.com/sitemap.xml\n"
     return HttpResponse(content, content_type="text/plain")
 
 

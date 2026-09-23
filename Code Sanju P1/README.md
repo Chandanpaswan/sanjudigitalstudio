@@ -21,6 +21,6 @@ For deployment, set `DJANGO_SECRET_KEY`, `DJANGO_DEBUG=False`, and `DJANGO_ALLOW
 
 ## Vercel deployment
 
-The project is configured for Vercel with `api/index.py` and `vercel.json`. The production site is available at `https://sanjudigitalstudio.vercel.app/`.
+The project is configured for Vercel with `api/index.py` and `vercel.json`. The production site is available at `https://sanjudigitalstudio.com/`.
 
 The current SQLite database is suitable for local development only; Vercel's serverless filesystem is not persistent. Use a hosted PostgreSQL database before relying on production admin or content changes.
